@@ -20,7 +20,7 @@ const RootStackNavigator = StackNavigator(
       },
       headerStyle: {
         height: 70,
-        backgroundColor: Colors.tabBarBackground
+        backgroundColor: Colors.tabBarBackground,
       }
     })
   }
