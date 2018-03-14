@@ -3,6 +3,7 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import Colors from '../constants/Colors';
 import MainTabNavigator from './MainTabNavigator';
+import { MaterialIcons } from '@expo/vector-icons';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
 const RootStackNavigator = StackNavigator(
@@ -13,6 +14,14 @@ const RootStackNavigator = StackNavigator(
   },
   {
     navigationOptions: () => ({
+      headerRight: (
+        <MaterialIcons
+          name="chat"
+          size={45}
+          style={{ marginRight: 6 }}
+          color="#FFFFFF"
+        />
+      ),
       headerTitleStyle: {
         fontWeight: '700',
         fontSize: 38,
@@ -20,7 +29,7 @@ const RootStackNavigator = StackNavigator(
       },
       headerStyle: {
         height: 70,
-        backgroundColor: Colors.tabBarBackground,
+        backgroundColor: Colors.tabBarBackground
       }
     })
   }
