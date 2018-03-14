@@ -65,7 +65,7 @@ export default TabNavigator(
     }),
     tabBarComponent: TabBarBottom,
     tabBarOptions: {
-      activeBackgroundColor: '#000066',
+      activeBackgroundColor: '#044399',
       labelStyle: {
         color: Colors.tabBar,
         fontWeight: '700',
