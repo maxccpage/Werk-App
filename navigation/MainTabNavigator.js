@@ -5,21 +5,29 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 
 import Colors from '../constants/Colors';
 
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import JobsScreen from '../screens/JobsScreen';
+import ScheduleScreen from '../screens/ScheduleScreen';
+import ClockInScreen from '../screens/ClockInScreen';
+import AccountScreen from '../screens/AccountScreen';
+import SupportScreen from '../screens/SupportScreen';
 
 export default TabNavigator(
   {
-    Home: {
-      screen: HomeScreen,
+    Jobs: {
+      screen: JobsScreen
     },
-    Links: {
-      screen: LinksScreen,
+    Schedule: {
+      screen: ScheduleScreen
     },
-    Settings: {
-      screen: SettingsScreen,
+    ClockIn: {
+      screen: ClockInScreen
     },
+    Account: {
+      screen: AccountScreen
+    },
+    Support: {
+      screen: SupportScreen
+    }
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -27,32 +35,49 @@ export default TabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
-          case 'Home':
+          case 'Jobs':
+            iconName = Platform.OS === 'ios' ? `ios-search` : 'md-search';
+            break;
+          case 'Schedule':
+            iconName = Platform.OS === 'ios' ? `ios-calendar` : 'md-calendar';
+            break;
+          case 'ClockIn':
+            iconName = Platform.OS === 'ios' ? `ios-clock` : 'md-clock';
+            break;
+          case 'Account':
+            iconName = Platform.OS === 'ios' ? `ios-contact` : 'md-contact';
+            break;
+          case 'Support':
             iconName =
               Platform.OS === 'ios'
-                ? `ios-information-circle${focused ? '' : '-outline'}`
+                ? `ios-information-circle-outline`
                 : 'md-information-circle';
-            break;
-          case 'Links':
-            iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
-            break;
-          case 'Settings':
-            iconName =
-              Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options';
         }
         return (
           <Ionicons
             name={iconName}
-            size={28}
+            size={45}
             style={{ marginBottom: -3 }}
-            color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+            color={focused ? Colors.tabBar : Colors.tabBar}
           />
         );
-      },
+      }
     }),
     tabBarComponent: TabBarBottom,
+    tabBarOptions: {
+      labelStyle: {
+        color: Colors.tabBar,
+        fontWeight: '700',
+        fontSize: 13
+      },
+
+      style: {
+        height: 70,
+        backgroundColor: Colors.tabBarBackground
+      }
+    },
     tabBarPosition: 'bottom',
     animationEnabled: false,
-    swipeEnabled: false,
+    swipeEnabled: false
   }
 );
